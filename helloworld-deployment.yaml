@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: helloworld-deployment
+  labels:
+    app: helloworld
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: helloworld
+  template:
+    metadata:
+      labels:
+        app: helloworld
+    spec:
+      containers:
+      - name: helloworld
+        image: hello-world:latest
+        command: ["sh", "-c", "echo 'HELLO WORLD, swisscom2023 - smingate777'"]
+        env:
+        - name: PARAMETER1
+          value: "swisscom2023"
+        - name: PARAMETER2
+          value: "smingate777"
+        ports:
+        - containerPort: 8080
+
